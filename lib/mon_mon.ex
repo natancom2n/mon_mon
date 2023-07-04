@@ -25,7 +25,6 @@ defmodule MonMon do
 
   def start_game do
     IO.puts("What's your name?")
-    # name = IO.gets("") |> String.trim()
     name = IO.gets("") |> String.upcase() |> String.replace(" ", "")
     IO.puts("your name is #{name}")
 
@@ -37,7 +36,7 @@ defmodule MonMon do
 
     Status.print_round_message(Game.info())
 
-    IO.puts("\nHow do you like attack?\n")
+    IO.puts("\nHow would you like to proceed?\n")
     IO.puts("Press 1 for kick, 2 for punch or 3 for healing\n")
 
     choice = IO.gets("")
@@ -69,7 +68,6 @@ defmodule MonMon do
   defp do_move({:error, move}), do: Status.print_wrong_move_message(move)
 
   defp do_move({:ok, move}) do
-    IO.puts("inside do_move #{move}\n")
 
     case move do
       :move_heal -> Actions.heal()
@@ -80,19 +78,18 @@ defmodule MonMon do
   end
 
   defp computer_move(%{turn: :computer, status: :continue}) do
-    IO.puts("INSIDE OF COMPUTER_MOVE")
     # move = Enum.random([:kick, :punch, :healing])
     move = {:ok, Enum.random(@computer_moves)}
     do_move(move)
 
-    IO.puts("Press 1 for kick, 2 for punch or 3 for healing\n")
-    choice = IO.gets("")
+    # IO.puts("Press 1 for kick, 2 for punch or 3 for healing\n")
+    # choice = IO.gets("")
 
-    case choice do
-      "1\n" -> make_move(:kick)
-      "2\n" -> make_move(:punch)
-      "3\n" -> make_move(:healing)
-    end
+    # case choice do
+    #   "1\n" -> make_move(:kick)
+    #   "2\n" -> make_move(:punch)
+    #   "3\n" -> make_move(:healing)
+    # end
   end
 
   defp computer_move(_), do: :ok

@@ -88,10 +88,48 @@ defmodule MonMon.GameTest do
     end
   end
 
-  describe "player/1" do
-    test "create a player" do
+  describe "player/0" do
+    test "return a struct of player" do
+      player = Player.build("Natan", :kick, :punch, :healing)
+      computer = Player.build("Balrog", :kick, :punch, :healing)
 
+      Game.start(computer, player)
+
+      expected_reponse = %MonMon.Player{
+        life: 100,
+        name: "Natan",
+        moves: %{move_avarage: :punch, move_heal: :healing, move_random: :kick}
+      }
+
+      assert expected_reponse = Game.player()
     end
+  end
 
+  describe "turn/0" do
+    test "Return who is turn, :player or :computer" do
+      player = Player.build("Natan", :kick, :punch, :healing)
+      computer = Player.build("Balrog", :kick, :punch, :healing)
+
+      Game.start(computer, player)
+
+      assert :player = Game.turn()
+    end
+  end
+
+  describe "fetch_player/1" do
+    test "fetch a valid player: :computer or :player" do
+      player = Player.build("Natan", :kick, :punch, :healing)
+      computer = Player.build("Balrog", :kick, :punch, :healing)
+
+      Game.start(computer, player)
+
+      expected_response = %MonMon.Player{
+        life: 10,
+        name: "Natan",
+        moves: %{move_avarage: :punch, move_heal: :healing, move_random: :kick}
+      }
+
+      assert expected_response = Game.fetch_player(:player)
+    end
   end
 end

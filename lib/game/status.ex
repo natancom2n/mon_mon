@@ -41,11 +41,12 @@ defmodule MonMon.Game.Status do
   end
 
   def print_move_message(:computer, :attack, damage) do
-    IO.puts("\n =======  The Player attacked the Enemy dealing #{damage} damage. =============\n")
+    IO.puts("\n =======  The Player attacked the Balrog dealing #{damage} damage. =============\n")
+    # IO.puts("\n =======  The Player attacked the #{computer} dealing #{damage} damage. =============\n")
   end
 
-  def print_move_message(:player, :attack, damage) do
-    IO.puts("\n =======  The Enemy attacked the Player dealing #{damage} damage. =============\n")
+  def print_move_message(player, :attack, damage) do
+    IO.puts("\n =======  The Enemy attacked the #{player} dealing #{damage} damage. =============\n")
   end
 
   def print_move_message(player, :healing, life) do

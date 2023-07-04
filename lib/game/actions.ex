@@ -1,6 +1,7 @@
 defmodule MonMon.Game.Actions do
   alias MonMon.Game
   alias MonMon.Game.Actions.{Attack, Heal}
+
   def attack(move) do
     case Game.turn() do
       :player -> Attack.attack_opponent(:computer, move)
