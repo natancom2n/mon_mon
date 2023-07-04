@@ -82,14 +82,14 @@ defmodule MonMon do
     move = {:ok, Enum.random(@computer_moves)}
     do_move(move)
 
-    # IO.puts("Press 1 for kick, 2 for punch or 3 for healing\n")
-    # choice = IO.gets("")
+    IO.puts("Press 1 for kick, 2 for punch or 3 for healing\n")
+    choice = IO.gets("")
 
-    # case choice do
-    #   "1\n" -> make_move(:kick)
-    #   "2\n" -> make_move(:punch)
-    #   "3\n" -> make_move(:healing)
-    # end
+    case choice do
+      "1\n" -> make_move(:kick)
+      "2\n" -> make_move(:punch)
+      "3\n" -> make_move(:healing)
+    end
   end
 
   defp computer_move(_), do: :ok
