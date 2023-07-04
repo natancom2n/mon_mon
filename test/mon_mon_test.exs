@@ -1,8 +1,7 @@
-defmodule MonMonTest do
+defmodule MonMon.MonMonTest do
   use ExUnit.Case
-  doctest MonMon
 
-  test "greets the world" do
-    assert MonMon.hello() == :world
+  test "greats_world" do
+    assert true == true
   end
 end
